@@ -5,6 +5,7 @@ import store from './store'
 import axiosInstance from './util/service'
 import './assets/css/global.css'
 import './assets/css/fonts/Helvetica/Helvetica.css'
+import 'vue-octicon/icons'
 
 Vue.prototype.axios = axiosInstance
 
