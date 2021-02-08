@@ -4,15 +4,15 @@ function getToken() {
   return localStorage.getItem('authenticated_user')
 }
 
-// Add a request interceptor
+// Request interceptor
 axios.interceptors.request.use(
   function(config) {
-    // Do something before request is sent
+    // Makes request configurations before request is sent
     config.headers.Authorization = `Bearer ${getToken()}`
     return config
   },
   function(error) {
-    // Do something with request error
+    // Handles error with request error
     return Promise.reject(error)
   }
 )
