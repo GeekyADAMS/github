@@ -1,10 +1,12 @@
 <template>
-  <div class="profile w-screen">
+  <div class="profile flex-col w-screen relative">
     <div class="w-full prenav-space"></div>
-    <Navtab class=""/>
+    <vue-position-sticky @change="handleStickyChange">
+      <Navtab :showNavProfile="showNavTabProfile"/>
+    </vue-position-sticky>
 
-    <div class="w-full h-screen flex-row-between">
-      <ProfileDetails />
+    <div class="profile-body w-full flex-row-between">
+      <ProfileDetails/>
       
       <main>
         <Repositories />
@@ -17,33 +19,51 @@
 import Navtab from '@/components/Profile/Navtab'
 import ProfileDetails from '@/components/Profile/Profile-details'
 import Repositories from '@/components/Profile/Repositories'
+import { mapActions } from 'vuex'
+
 
 export default {
+  data () {
+    return {
+      showNavTabProfile: false
+    }
+  },
   components: {
     Navtab,
     ProfileDetails,
     Repositories
   },
+  computed: {
+    user() {
+      return this.$route.params.user
+    }
+  },
+  methods: {
+    ...mapActions([
+      'fetchUserProfile',
+      'fetchUserRepositories'
+    ]),
+    handleStickyChange() {
+      this.showNavTabProfile = !this.showNavTabProfile
+    }
+  },
+  created () {
+    this.fetchUserProfile(this.user)
+    this.fetchUserRepositories({
+      user: this.user,
+      page: this.$route.query.page || 1
+    })
+  },
   mounted () {
-    // const navtab = this.$refs.navtab
-
-    // window.addEventListener("scroll", function() {
-    //   let nav_top = navtab.getBoundingClientRect().top
-    //   let window_top = window.scrollTop
-    //   if (window_top > nav_top) {
-    //     // when the scrolnavigationl's y is bigger than the nav's y set class to fixednav
-    //     navtab.classList.add("fixedtop")
-    //     navtab.classList.remove('static')
-    //   } else { // Overwise set the class to staticnav
-    //     navtab.classList.add("static")
-    //     navtab.classList.remove('fixedtop')
-    //   }
-    // })
   }
 }
 </script>
 
 <style scoped>
+.profile {
+  height: fit-content;
+  align-items: center;
+}
 .prenav-space {
   height: 1rem;
 }
@@ -51,5 +71,11 @@ export default {
 main {
   flex-grow: 1;
   margin-right:6rem;
+}
+
+@media screen and (max-width: 640px) {
+  .profile-body {
+    flex-direction: column;
+  }
 }
 </style>

@@ -33,7 +33,7 @@ html, body {
   background-color: white;
   overflow-x: hidden;
   width: 100vw;
-  max-width: 100vw;
+  max-width: 100vw !important;
   scroll-behavior: smooth;
   padding: 0 !important;
   margin: 0 !important;
@@ -80,6 +80,9 @@ html, body {
 .w-full {
   width: 100%;
 }
+.w-fit {
+  width: fit-content;
+}
 
 .h-screen {
   height: 100vh;
@@ -95,10 +98,21 @@ html, body {
   flex-direction: row;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .center-align-row {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.centered-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .flex-row-between-centered {
@@ -121,11 +135,13 @@ html, body {
 /* Positioning */
 .sticky {
   position: sticky;
-  top: 0;
+  position: -webkit-sticky;
+  top: -1px;
+  border: 1px solid red;
 }
 
 .static {
-  position: sticky;
+  position: static;
 }
 
 .fixedtop {
@@ -138,8 +154,15 @@ html, body {
 }
 
 /* Spacing */
+.px-p5 {
+  padding: 0 1rem;
+}
+
 .mt-0 {
   margin-top: 0;
+}
+.mt--p3 {
+  margin-top: -.3rem;
 }
 .mt--p5 {
   margin-top: -1rem;
@@ -157,6 +180,12 @@ html, body {
   margin-top: 2rem;
 }
 
+.mb-p5 {
+  margin-bottom: .5rem;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
 .mb-1p5 {
   margin-bottom: 1.5rem;
 }
@@ -177,6 +206,9 @@ html, body {
   margin-right: .5rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
 .ml-4 {
   margin-left: 4rem;
 }
@@ -184,11 +216,18 @@ html, body {
   margin-left: .5rem;
 }
 
+.mx-auto {
+  margin: auto;
+}
+
 .space-1 {
   letter-spacing: 1.5px;
 }
 
 /* Display */
+.fade-0 {
+  opacity: 0;
+}
 .fade-4 {
   opacity: .4;
 }
@@ -246,9 +285,30 @@ button:focus {
   border-bottom: .5px solid rgba(0, 0, 0, .1);
 }
 
+.border-top-light {
+  border-top: .5px solid rgba(0, 0, 0, .1);
+}
+
+.no-focus:focus {
+  outline: none;
+}
+
 
 /* Responsiveness */
 @media screen and (max-width: 640px) {
+  .sm-flex-col {
+    flex-direction: column;
+  }
+  .sm-ml-0 {
+    margin-left: 0;
+  }
+  .sm-mt-1 {
+    margin-top: 1rem;
+  }
+
+  .sm-hide {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 640px) {
