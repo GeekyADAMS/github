@@ -11,8 +11,11 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "dayjs": "^1.10.4",
+    "flash-notif": "^1.0.5",
     "vue": "^2.6.11",
     "vue-octicon": "^2.1.1",
+    "vue-position-sticky": "^0.2.1",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },

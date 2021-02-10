@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: process.env.REQ_BASE_URL
+  baseURL: 'https://api.github.com' // Can be loaded from env
 })
 
 export default instance

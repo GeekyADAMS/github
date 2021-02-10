@@ -7,7 +7,7 @@
 <script>
 export default {
   beforeCreate() {
-    this.$router.push('/Ghost')
+    this.$router.push('/GeekyADAMS?tab=repositories')
   }
 }
 </script>

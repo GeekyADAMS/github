@@ -8,7 +8,7 @@
         <img src="~@/assets/images/icons/search-key-slash.svg" class="nav__search__icon" alt="Search key">
       </div>
 
-      <div class="nav__list">
+      <div class="nav__list sm-hide">
         <ul class="center-align-row font-bold">
           <li v-for="(item, index) in navListItems" :key="index" class="fade-hover">
             {{item.title}}
@@ -23,12 +23,12 @@
         <div class="nav__right__circle rounded-full"></div>
       </div>
 
-      <div class="center-align-row fade-hover">
+      <div class="center-align-row fade-hover sm-hide">
         <octicon name="plus" class="mr-p3"/>
         <octicon name="triangle-down" scale=".8" />
       </div>
 
-      <div class="center-align-row fade-hover">
+      <div class="center-align-row fade-hover sm-hide">
         <img src="~@/assets/images/pictures/default-profile-avi.png" class="nav__right__avi mr-p3 rounded-full" width="20px" alt="Profile AVI">
         <octicon name="triangle-down" scale=".8" />
       </div>
@@ -53,6 +53,8 @@ export default {
   },
   components: {
     Octicon
+  },
+  computed: {
   }
 }
 </script>
@@ -114,5 +116,11 @@ li {
   height: 8px;
   margin: -.15rem 0 0 -.45rem;
   background: var(--github-link-blue);
+}
+
+@media screen and (max-width: 640px) {
+  .nav {
+    padding: .5rem .5rem;
+  }
 }
 </style>
