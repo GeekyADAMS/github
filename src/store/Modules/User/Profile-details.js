@@ -12,7 +12,6 @@ const actions = {
   async fetchUserProfile({ commit }, username) {
     try {
       const response = await Request.getRequest(`/users/${username}`)
-      console.log('Profile response is: ', response)
       commit("SET_USER_PROFILE", response.data)
     } catch(err) {
       console.log('Error from profile fetching: ', err)

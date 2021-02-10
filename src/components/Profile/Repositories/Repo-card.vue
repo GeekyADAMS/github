@@ -1,7 +1,7 @@
 <template>
   <div class="card border-bottom-light  flex-row-between">
     <div class="card__info">
-      <h3 class="card__info__repo-name link-blue space-1">{{repo.name}}</h3>
+      <a :href="repo.svn_url" target="_blank" rel="noopener noreferrer"><h3 class="card__info__repo-name link-blue space-1">{{repo.name}}</h3></a>
       <span class="card__info__forked xsmall-text fade-6" v-if="repo.fork">
         Forked from {{repo.forked_from}}
       </span>
@@ -96,6 +96,10 @@ export default {
 button {
   padding: .5rem .7rem;
   height: 1.7rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 640px) {
